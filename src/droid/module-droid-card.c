@@ -127,7 +127,7 @@ static const char* const valid_modargs[] = {
 };
 
 #define DEFAULT_MODULE_ID "primary"
-#define VOICE_CALL_PROFILE_NAME     "voicecall"
+#define VOICE_CALL_PROFILE_NAME     "Voice Call"
 #define VOICE_CALL_PROFILE_DESC     "Call mode"
 #define VOICE_RECORD_PROFILE_NAME   "voicecall-record"
 #define VOICE_RECORD_PROFILE_DESC   "Call mode record"
