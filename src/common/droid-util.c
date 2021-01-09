@@ -263,7 +263,7 @@ static void add_default_profile(pa_droid_profile_set *ps,
 
     pa_log_debug("New default profile");
 
-    p = profile_new(ps, module, "default", "Default profile");
+    p = profile_new(ps, module, "HiFi", "Default profile");
 
     if (primary_output)
         pa_idxset_put(p->output_mappings, pa_droid_mapping_get(ps, primary_output), NULL);
