@@ -1,4 +1,4 @@
-Source: pulseaudio-modules-droid
+Source: pulseaudio-modules-droid-jb2q
 Section: sound
 Priority: optional
 Build-Depends: android-headers,
@@ -15,19 +15,45 @@ Build-Depends: android-headers,
                libexpat1-dev,
                libevdev-dev,
                libudev-dev
-Maintainer: Marius Gripsgard <marius@ubports.com>
+Maintainer: Eugenio Paolantonio (g7) <me@medesimo.eu>
+XSBC-Original-Maintainer: Marius Gripsgard <marius@ubports.com>
 Standards-Version: 4.3.0
 Homepage: https://github.com/mer-hybris/pulseaudio-modules-droid
-Vcs-Git: https://gitlab.com/debian-pm/halium/pulseaudio-modules-droid.git
-Vcs-Browser: https://gitlab.com/debian-pm/halium/pulseaudio-modules-droid
+Vcs-Git: https://github.com/droidian/pulseaudio-modules-droid-jb2q.git
+Vcs-Browser: https://github.com/droidian/pulseaudio-modules-droid-jb2q
 
-Package: pulseaudio-modules-droid
+Package: pulseaudio-modules-droid-jb2q
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
-Description: PulseAudio Droid HAL module.
+Breaks: pulseaudio-modules-droid (<< 14.2.97)
+Replaces: pulseaudio-modules-droid (<< 14.2.97)
+Description: PulseAudio Droid HAL module
+ Pulseaudio modules to interact with the Android HAL.
+ .
+ This package contains the actual modules, for Android
+ 4.1 through 10.
+
+Package: pulseaudio-modules-droid-jb2q-dev
+Architecture: any
+Depends: pulseaudio-modules-droid-jb2q (= ${binary:Version}),
+         ${misc:Depends},
+Breaks: pulseaudio-modules-droid-dev (<< 14.2.97)
+Replaces: pulseaudio-modules-droid-dev (<< 14.2.97)
+Description: PulseAudio Droid HAL module - development headers
+ Pulseaudio modules to interact with the Android HAL.
+ .
+ This package contains the development headers.
+
+Package: pulseaudio-modules-droid
+Architecture: all
+Depends: pulseaudio-modules-droid-jb2q
+Description: PulseAudio Droid HAL module - transitional package
+ This package is a transitional package. Feel free to
+ remove it.
 
 Package: pulseaudio-modules-droid-dev
-Architecture: any
-Depends: pulseaudio-modules-droid (= ${binary:Version}),
-         ${misc:Depends},
-Description: PulseAudio Droid HAL module development headers.
+Architecture: all
+Depends: pulseaudio-modules-droid-jb2q-dev
+Description: PulseAudio Droid HAL module - development headers - transitional package
+ This package is a transitional package. Feel free to
+ remove it.
