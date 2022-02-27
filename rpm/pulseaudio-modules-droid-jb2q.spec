@@ -2,13 +2,13 @@
 %define pulsemajorminor %{expand:%(echo '%{pulseversion}' | cut -d+ -f1)}
 %define moduleversion %{pulsemajorminor}.%{expand:%(echo '%{version}' | cut -d. -f3)}
 
-Name:       pulseaudio-modules-droid
+Name:       pulseaudio-modules-droid-jb2q
 
 Summary:    PulseAudio Droid HAL modules
-Version:    %{pulsemajorminor}.93
+Version:    %{pulsemajorminor}.97
 Release:    1
 License:    LGPLv2+
-URL:        https://github.com/mer-hybris/pulseaudio-modules-droid
+URL:        https://github.com/mer-hybris/pulseaudio-modules-droid-jb2q
 Source0:    %{name}-%{version}.tar.bz2
 Requires:   pulseaudio >= %{pulseversion}
 Requires:   %{name}-common = %{version}-%{release}
@@ -20,13 +20,17 @@ BuildRequires:  pkgconfig(pulsecore) >= %{pulsemajorminor}
 BuildRequires:  pkgconfig(android-headers)
 BuildRequires:  pkgconfig(libhardware)
 BuildRequires:  pkgconfig(expat)
+Provides:   pulseaudio-modules-droid = %{version}
+Obsoletes:  pulseaudio-modules-droid <= 14.2.95
 
 %description
-PulseAudio Droid HAL modules.
+PulseAudio Droid HAL modules, supports Android versions from 4 to 10.
 
 %package common
 Summary:    Common libs for the PulseAudio droid modules
 Requires:   pulseaudio >= %{pulseversion}
+Provides:   pulseaudio-modules-droid-common = %{version}
+Obsoletes:  pulseaudio-modules-droid-common <= 14.2.95
 
 %description common
 This contains common libs for the PulseAudio droid modules.
@@ -35,12 +39,14 @@ This contains common libs for the PulseAudio droid modules.
 Summary:    Development files for PulseAudio droid modules
 Requires:   %{name}-common = %{version}-%{release}
 Requires:   pulseaudio >= %{pulseversion}
+Provides:   pulseaudio-modules-droid-devel = %{version}
+Obsoletes:  pulseaudio-modules-droid-devel <= 14.2.95
 
 %description devel
 This contains development files for PulseAudio droid modules.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -n %{name}-%{version}
 
 %build
 echo "%{moduleversion}" > .tarball-version
@@ -51,7 +57,7 @@ else
 . %{_libdir}/droid-devel/hw-release.vars
 fi
 %reconfigure --disable-static --with-droid-device=$MER_HA_DEVICE
-make %{?jobs:-j%jobs}
+%make_build
 
 %install
 rm -rf %{buildroot}
