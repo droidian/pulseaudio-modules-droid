@@ -25,6 +25,8 @@ Vcs-Browser: https://github.com/droidian/pulseaudio-modules-droid-jb2q
 Package: pulseaudio-modules-droid-jb2q
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Provides: pulseaudio-modules-droid-apispecific
+Conflicts: pulseaudio-modules-droid-apispecific
 Breaks: pulseaudio-modules-droid (<< 14.2.97)
 Replaces: pulseaudio-modules-droid (<< 14.2.97)
 Description: PulseAudio Droid HAL module
@@ -35,6 +37,8 @@ Description: PulseAudio Droid HAL module
 
 Package: pulseaudio-modules-droid-jb2q-dev
 Architecture: any
+Provides: pulseaudio-modules-droid-apispecific-dev
+Conflicts: pulseaudio-modules-droid-apispecific-dev
 Depends: pulseaudio-modules-droid-jb2q (= ${binary:Version}),
          ${misc:Depends},
 Breaks: pulseaudio-modules-droid-dev (<< 14.2.97)
