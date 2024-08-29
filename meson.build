@@ -24,6 +24,8 @@ hybris_dep = dependency('libhardware', version : '>= 0.1.0', required : true)
 hybris_common_dep = cc.find_library('hybris-common', required : true)
 ltdl_dep = cc.find_library('ltdl', required : true)
 pulsecore_dep = dependency('pulsecore', version : '>= 14.2', required : true)
+udev_dep = dependency('libudev', required : true)
+evdev_dep = dependency('libevdev', version : '>= 1.0', required : true)
 
 pa_version_str = meson.project_version()
 # For tarballs, the first split will do nothing, but for builds in git, we
